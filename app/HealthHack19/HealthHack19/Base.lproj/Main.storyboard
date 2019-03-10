@@ -377,6 +377,123 @@
             </objects>
             <point key="canvasLocation" x="3564" y="-241"/>
         </scene>
+        <!--Questions View Controller-->
+        <scene sceneID="RJH-J8-PFp">
+            <objects>
+                <viewController storyboardIdentifier="QuestionnaireVC" id="eN9-WP-RWI" customClass="QuestionsViewController" customModule="HealthHack19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nfb-rN-j1d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questionnaire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLh-lf-ZYd">
+                                <rect key="frame" x="42.5" y="55" width="290" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="ApW-1q-e8Y"/>
+                                    <constraint firstAttribute="width" constant="290" id="uYY-Gk-x6e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select yes or no if applies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOS-yu-g8F">
+                                <rect key="frame" x="42.5" y="86" width="290" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="0oy-Ud-kMu"/>
+                                    <constraint firstAttribute="height" constant="31" id="8OG-2X-l1g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aou-IK-f7t">
+                                <rect key="frame" x="37.5" y="125" width="300" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="TKV-Dr-ctX"/>
+                                    <constraint firstAttribute="width" constant="300" id="aOq-Y7-fso"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="nit-eN-xz5">
+                                <rect key="frame" x="42.5" y="495" width="290" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5X8-QF-smu" customClass="RoundedButton" customModule="HealthHack19" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="775-8w-h8k"/>
+                                            <constraint firstAttribute="width" constant="130" id="tH0-35-KeR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Yes">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="UploadImagesPressed:" destination="mZw-rJ-7zb" eventType="touchUpInside" id="hk6-ov-Dxn"/>
+                                            <action selector="uploadPicturesPressed:" destination="wdk-ck-BNx" eventType="touchUpInside" id="iGc-zV-KhP"/>
+                                            <action selector="yesBtnPressed:" destination="eN9-WP-RWI" eventType="touchUpInside" id="6Ne-Xc-eRX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txn-2U-MuJ" customClass="RoundedButton" customModule="HealthHack19" customModuleProvider="target">
+                                        <rect key="frame" x="160" y="0.0" width="130" height="50"/>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="SaN-5K-QDZ"/>
+                                            <constraint firstAttribute="width" constant="130" id="it1-sA-hXk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="No">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="UploadImagesPressed:" destination="mZw-rJ-7zb" eventType="touchUpInside" id="afB-ch-MPO"/>
+                                            <action selector="noBtnPressed:" destination="eN9-WP-RWI" eventType="touchUpInside" id="STB-Xy-Thr"/>
+                                            <action selector="uploadPicturesPressed:" destination="wdk-ck-BNx" eventType="touchUpInside" id="15a-ov-Ui8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QLh-lf-ZYd" firstAttribute="top" secondItem="zsr-Q5-MmE" secondAttribute="top" constant="35" id="0QU-wQ-FJ0"/>
+                            <constraint firstItem="dOS-yu-g8F" firstAttribute="top" secondItem="QLh-lf-ZYd" secondAttribute="bottom" id="V7I-gA-H0j"/>
+                            <constraint firstItem="QLh-lf-ZYd" firstAttribute="centerX" secondItem="nfb-rN-j1d" secondAttribute="centerX" id="XCu-FU-FnJ"/>
+                            <constraint firstItem="nit-eN-xz5" firstAttribute="centerX" secondItem="nfb-rN-j1d" secondAttribute="centerX" id="dPj-dv-Pj4"/>
+                            <constraint firstItem="aou-IK-f7t" firstAttribute="centerX" secondItem="nfb-rN-j1d" secondAttribute="centerX" id="dkT-K2-IVM"/>
+                            <constraint firstItem="dOS-yu-g8F" firstAttribute="centerX" secondItem="nfb-rN-j1d" secondAttribute="centerX" id="kD0-7a-M8G"/>
+                            <constraint firstItem="nit-eN-xz5" firstAttribute="top" secondItem="aou-IK-f7t" secondAttribute="bottom" constant="20" id="r3g-mW-gkg"/>
+                            <constraint firstItem="aou-IK-f7t" firstAttribute="top" secondItem="dOS-yu-g8F" secondAttribute="bottom" constant="8" id="zi2-x0-8eq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zsr-Q5-MmE"/>
+                    </view>
+                    <connections>
+                        <outlet property="noBtn" destination="txn-2U-MuJ" id="TuM-ai-kEk"/>
+                        <outlet property="subLbl" destination="dOS-yu-g8F" id="UJR-tV-gH1"/>
+                        <outlet property="textField" destination="aou-IK-f7t" id="PsL-xi-jO4"/>
+                        <outlet property="titleLbl" destination="QLh-lf-ZYd" id="26n-Jz-0vj"/>
+                        <outlet property="yesBtn" destination="5X8-QF-smu" id="eCQ-bi-b0d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uoV-kr-S4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4348" y="-242.42878560719643"/>
+        </scene>
     </scenes>
     <resources>
         <image name="openMouth" width="512" height="512"/>

@@ -41,6 +41,15 @@ class MorePicsViewController: UIViewController,UIImagePickerControllerDelegate, 
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func uploadPicturesPressed(_ sender: Any) {
+        if IMAGE_GUMS != nil && IMAGE_LIPS != nil && IMAGE_TOUNGE != nil{
+            uploadImage(image: IMAGE_GUMS!)
+            uploadImage(image: IMAGE_LIPS!)
+            uploadImage(image: IMAGE_TOUNGE!)
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "QuestionnaireVC") as! QuestionsViewController? {
+                self.present(vc, animated: true, completion: nil)
+            }
+            
+        }
     }
     
     @IBAction func gumsBtnPressed(_ sender: Any) {

@@ -10,6 +10,33 @@ import UIKit
 
 class QuestionsViewController: UIViewController {
     
+    //Outlets
+    @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var subLbl: UILabel!
+    @IBOutlet weak var yesBtn: RoundedButton!
+    @IBOutlet weak var noBtn: RoundedButton!
+    
+    let number = Int.random(in: 0 ... 4)
+    var question_num: Int = 0
+    
+    var sel_questionnaire = questionnaire.healthy
+    
+    var dict = [0: questionnaire.cold_sore,
+                            1: questionnaire.chancre,
+                            2: questionnaire.white_patches,
+                            3: questionnaire.dark_gums,
+                            4: questionnaire.healthy]
+    
+    enum questionnaire {
+        case cold_sore
+        case chancre
+        case white_patches
+        case dark_gums
+        case healthy
+        
+    }
+    
     struct Questionaire {
         var cold_sores: Question
         var chancre: Question
@@ -18,7 +45,8 @@ class QuestionsViewController: UIViewController {
         var healthy: String
     }
     
-    struct Question {
+    
+        struct Question {
         var q: [String]
         var a: [String]
     }
@@ -101,27 +129,178 @@ class QuestionsViewController: UIViewController {
     
     
     
-    @IBOutlet weak var questionTxt: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sel_questionnaire = dict[number]!
+        titleLbl.text = "Questionnaire"
+        switch sel_questionnaire {
+        case .cold_sore:
+            subLbl.text = "Detected cold sore"
+            textField.text = form.cold_sores.q[0]
+        case .dark_gums:
+            subLbl.text = "Detected dark gums"
+            textField.text = form.dark_gums.q[0]
+        case .chancre:
+            subLbl.text = "Detected chancre"
+            textField.text = form.chancre.q[0]
+        case .white_patches:
+            subLbl.text = "Detected white patches"
+            textField.text = form.white_patches.q[0]
+        case .healthy:
+            giveAnswer(answer: 0)
+        }
+        subLbl.isHidden = false
+        yesBtn.isHidden = false
+        noBtn.isHidden = false
         
         
     }
     
-    @IBAction func YesButton(_ sender: UIButton) {
+    
+    @IBAction func yesBtnPressed(_ sender: Any) {
+        switch sel_questionnaire {
+        case .dark_gums:
+            switch question_num {
+            case 0:
+                giveAnswer(answer: 0)
+                
+            case 1:
+                giveAnswer(answer: 0)
+            case 2:
+                giveAnswer(answer: 1)
+            default:
+                textField.text = "Wait what?"
+            }
+        case .cold_sore:
+            switch question_num {
+            case 0:
+                giveAnswer(answer: 0)
+            case 1:
+                giveAnswer(answer: 0)
+            case 2:
+                giveAnswer(answer: 0)
+            default:
+                textField.text = "Wait what?"
+            }
+        case .chancre:
+            switch question_num {
+            case 0:
+                giveAnswer(answer: 0)
+            case 1:
+                giveAnswer(answer: 1)
+            case 2:
+                question_num = question_num + 1
+                textField.text = form.chancre.q[question_num]
+            case 3:
+                question_num = question_num + 1
+                textField.text = form.chancre.q[question_num]
+            case 4:
+                giveAnswer(answer: 2)
+            default:
+                textField.text = "Los caminos de la fuerza son inescrutables..."
+            }
+        case .white_patches:
+            switch question_num{
+            case 0:
+                giveAnswer(answer: 0)
+            case 1:
+                giveAnswer(answer: 0)
+            case 2:
+                giveAnswer(answer: 1)
+            default:
+                textField.text = "Los caminos de la fuerza son inescrutables..."
+            }
+        default:
+            textField.text = "Los caminos de la fuerza son inescrutables..."
+        }
+    }
+    
+    
+    @IBAction func noBtnPressed(_ sender: Any) {
+        switch sel_questionnaire {
+        case .dark_gums:
+            switch question_num {
+            case 0:
+                question_num = question_num + 1
+                textField.text = form.dark_gums.q[question_num]
+            case 1:
+                question_num = question_num + 1
+                textField.text = form.dark_gums.q[question_num]
+            case 2:
+                giveAnswer(answer: 0)
+            default:
+                textField.text = "How is this possible?"
+            }
+        case .cold_sore:
+            switch question_num {
+            case 0:
+                question_num = question_num + 1
+                textField.text = form.cold_sores.q[question_num]
+            case 1:
+                question_num = question_num + 1
+                textField.text = form.cold_sores.q[question_num]
+            case 2:
+                giveAnswer(answer: 1)
+            default:
+                textField.text = "How is this possible?"
+            }
+        case .chancre:
+            switch question_num{
+            case 0:
+                question_num = question_num + 1
+                textField.text = form.chancre.q[question_num]
+            case 1:
+                question_num = question_num + 1
+                textField.text = form.chancre.q[question_num]
+            case 2:
+                giveAnswer(answer: 4)
+            case 3:
+                giveAnswer(answer: 4)
+            case 4:
+                giveAnswer(answer: 3)
+            default:
+                textField.text = "Los caminos de la fuerza son inescrutables..."
+            }
+        case .white_patches:
+            switch question_num{
+            case 0:
+                question_num = question_num + 1
+                textField.text = form.white_patches.q[question_num]
+            case 1:
+                question_num = question_num + 1
+                textField.text = form.white_patches.q[question_num]
+            case 2:
+                giveAnswer(answer: 0)
+            default:
+                textField.text = "Los caminos de la fuerza son inescrutables..."
+            }
+        default:
+            textField.text = "Los caminos de la fuerza son inescrutables..."
+        }
         
     }
-    @IBAction func NoButton(_ sender: UIButton) {
+    
+    
+    func giveAnswer(answer num: Int) -> Void{
+        switch sel_questionnaire {
+        case .dark_gums:
+            textField.text = form.dark_gums.a[num]
+        case .cold_sore:
+            textField.text = form.cold_sores.a[num]
+        case .chancre:
+            textField.text = form.chancre.a[num]
+        case.white_patches:
+            textField.text = form.white_patches.a[num]
+        default:
+            textField.text = "You seem to be healthy!!"
+            break
+        }
         
+        yesBtn.isHidden = true
+        noBtn.isHidden = true
+        titleLbl.text = "Our Suggestion"
+        subLbl.isHidden = true
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
