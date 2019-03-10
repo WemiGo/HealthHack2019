@@ -1,4 +1,4 @@
-# Imperial Collage Health-Hack 2019
+# Imperial College Health-Hack 2019
 
 We called our project Munsjuk, which comes from the Swedish words meaning "mouth diseases".
 The full description of the project is available on Devpost:
