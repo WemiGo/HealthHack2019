@@ -17,26 +17,20 @@ class ImageUploadVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var ageTxtField: UITextField!
     @IBOutlet weak var genderTxtField: UITextField!
     @IBOutlet weak var otherTxtField: UITextField!
-    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var UploadHHBtn: RoundedButton!
-    
-    
+    @IBOutlet weak var selectImageBtn: UIButton!
     
     
     
     //Variables
     var bgColour: UIColor?
     var image: UIImage?
-    let picker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        picker.delegate = self
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
     }
     
     
@@ -44,7 +38,7 @@ class ImageUploadVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         let logoutPopup = UIAlertController(title: "Choose source", message:
             nil, preferredStyle: .actionSheet)
         let PictureUpload = UIAlertAction(title: "Select Picture", style: .default) { (buttonTapped) in
-            self.present(self.picker, animated: true, completion: nil)
+            self.checkLibraryPermission()
         }
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let TakePicture = UIAlertAction(title: "Take Picture", style: .default) { (buttonTapped) in
@@ -59,7 +53,9 @@ class ImageUploadVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     @IBAction func UploadImagesPressed(_ sender: Any) {
-        //TODO upload picture and proces
+        if image != nil{
+            present(MorePicsVC(), animated: true, completion: nil)
+        }
         
     }
     
@@ -77,7 +73,7 @@ class ImageUploadVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
             myPickerController.sourceType = .camera
-            myPickerController.allowsEditing = false
+            myPickerController.allowsEditing = true
             self.present(myPickerController, animated: true, completion: nil)
         }
         
@@ -90,6 +86,7 @@ class ImageUploadVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
             myPickerController.sourceType = .photoLibrary
+            myPickerController.allowsEditing = true
             self.present(myPickerController, animated: true, completion: nil)
         }
     }
@@ -108,11 +105,9 @@ class ImageUploadVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         }
         
         if let selImage = selectedImage{
-            userImage.contentMode = .scaleAspectFill
-            userImage.image = selImage
+            selectImageBtn.imageView?.image = selImage
             image = selImage
-        } else {
-            self.userImage.backgroundColor = #colorLiteral(red: 0.4784313725, green: 0.5058823529, blue: 1, alpha: 1)
+            IMAGE_TOUNGE = selImage
         }
         
         dismiss(animated: true, completion: nil)
